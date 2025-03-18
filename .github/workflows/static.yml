@@ -3,7 +3,7 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches:
-      - master  # 或者 "main" 看你的仓库默认分支
+      - master
   workflow_dispatch:
 
 permissions:
@@ -24,13 +24,13 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Build site
+      - name: Build Hugo site
         run: hugo --minify
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: public  # Hugo 生成的静态 HTML 存放在 public 目录
+          path: public
 
       - name: Deploy to GitHub Pages
         id: deployment
